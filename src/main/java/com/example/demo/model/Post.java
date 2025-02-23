@@ -1,13 +1,14 @@
 package com.example.demo.model;
 
+import java.util.Date;
 import java.util.Random;
 
 public class Post {
     private final String text;
-    private final String creationDate;
+    private final Date creationDate;
     private Integer likes;
 
-    public Post(String text, String creationDate){
+    public Post(String text, Date creationDate){
         this.text =text;
         this.creationDate = creationDate;
         Random rnd = new Random();
@@ -19,7 +20,7 @@ public class Post {
     public String getText(){
         return text;
     }
-    public String getCreationDate(){
+    public Date getCreationDate(){
         return creationDate;
     }
 }
