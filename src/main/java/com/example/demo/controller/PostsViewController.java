@@ -26,4 +26,5 @@ public class PostsViewController {
     public String single(@PathVariable("id") Long id) {
         return "Здесь будет страница поста #" + id;
     }
+
 }

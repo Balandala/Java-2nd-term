@@ -18,9 +18,8 @@ public class PostService {
     }
 
     private PostService(){
-        posts.add(new Post("Котики - это круто!", new Date()));
-        posts.add(new Post("Что бы спина не болела надо всего лишь перед сном...", new Date()));
-        posts.add(new Post("Абоба", new Date()));
+        this.create("Котики - это круто!");;
+
     }
 
     public ArrayList<Post> listAllPosts(){
@@ -28,6 +27,6 @@ public class PostService {
     }
 
     public void create(String text) {
-        posts.add(new Post(text, new Date()));
+        posts.add(new Post((long)posts.size(), text, new Date()));
     }
 }
