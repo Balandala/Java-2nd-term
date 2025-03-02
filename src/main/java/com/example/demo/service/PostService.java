@@ -1,32 +1,31 @@
 package com.example.demo.service;
 
 import com.example.demo.model.Post;
+import com.example.demo.repository.PostRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.StreamSupport;
 
 @Service
 public class PostService {
     private final ArrayList<Post> posts = new ArrayList<>();
-    private final static ArrayList<PostService> services = new ArrayList<>();
 
-    public static PostService getPostService(){
-        if (services.isEmpty())
-            services.add(new PostService());
-        return services.getFirst();
+
+    @Autowired
+    PostRepository postRepository;
+    public PostService(){
     }
 
-    private PostService(){
-        this.create("Котики - это круто!");;
-
-    }
-
-    public ArrayList<Post> listAllPosts(){
-        return posts;
+    public List<Post> listAllPosts(){
+        return StreamSupport.stream(postRepository.findAll().spliterator(), false).toList();
     }
 
     public void create(String text) {
-        posts.add(new Post((long)posts.size(), text, new Date()));
+        Post post = new Post(null, text, new Date());
+        postRepository.save(post);
     }
 }
