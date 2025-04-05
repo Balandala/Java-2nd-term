@@ -12,7 +12,8 @@ import java.util.List;
 @Controller
 public class PostsViewController {
     @Autowired
-    PostService postsService = new PostService();
+    PostService postsService;
+
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public String list(Model model) {
         model.addAttribute("appName", "Моё крутое приложение");

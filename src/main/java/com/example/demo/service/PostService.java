@@ -11,14 +11,9 @@ import java.util.List;
 import java.util.stream.StreamSupport;
 
 @Service
-public class PostService {
-    private final ArrayList<Post> posts = new ArrayList<>();
-
-
+public class PostService {  
     @Autowired
     PostRepository postRepository;
-    public PostService(){
-    }
 
     public List<Post> listAllPosts(){
         return StreamSupport.stream(postRepository.findAll().spliterator(), false).toList();
